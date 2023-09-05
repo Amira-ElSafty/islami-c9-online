@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_islami_app_c9_online/home/quran/hadeth_tab.dart';
+import 'package:flutter_islami_app_c9_online/home/hadeth/hadeth_tab.dart';
 import 'package:flutter_islami_app_c9_online/home/quran/quran_tab.dart';
-import 'package:flutter_islami_app_c9_online/home/quran/radio_tab.dart';
-import 'package:flutter_islami_app_c9_online/home/quran/tasbeh_tab.dart';
+import 'package:flutter_islami_app_c9_online/home/radio/radio_tab.dart';
+import 'package:flutter_islami_app_c9_online/home/tasbeh/tasbeh_tab.dart';
 import 'package:flutter_islami_app_c9_online/my_theme.dart';
 
 class HomeScreen extends StatefulWidget{
