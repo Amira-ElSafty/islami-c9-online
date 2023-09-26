@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_islami_app_c9_online/home/quran/item_sura_details.dart';
 import 'package:flutter_islami_app_c9_online/my_theme.dart';
+import 'package:flutter_islami_app_c9_online/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'sura-details';
@@ -16,12 +18,19 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs ;
+    var provider = Provider.of<AppConfigProvider>(context);
     if(verses.isEmpty){
       loadFile(args.index);
     }
     return Stack(children: [
-      Image.asset(
-        'assets/images/main_background.png',
+      provider.isDarkMode()?
+      Image.asset('assets/images/main_background_dark.png',
+        width: double.infinity,
+        height: double.infinity,
+        fit: BoxFit.fill,
+      )
+          :
+      Image.asset('assets/images/main_background.png',
         width: double.infinity,
         height: double.infinity,
         fit: BoxFit.fill,
@@ -30,7 +39,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         appBar: AppBar(
           title: Text(
             '${args.name}',
-            style: MyTheme.lightTheme.textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         body: verses.length == 0 ?
@@ -69,7 +78,6 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     setState(() {
 
     });
-    print(lines);
   }
 }
 class SuraDetailsArgs{
